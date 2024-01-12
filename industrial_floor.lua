@@ -266,3 +266,66 @@ minetest.register_craft({
 		{"plant_blocks:scissors", "plant_blocks:scissors"},
 	}
 })
+
+--plant_blocks:yellow_line_floor
+minetest.register_node("plant_blocks:yellow_line_floor", {
+    description = S("Industrial with yellow line floor"),
+    paramtype2 = "facedir",
+    --place_param2 = 0,
+    tiles = {
+    	"floor_up.png^[combine:32x32:0,0=yellow_line_up.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+   	},
+    is_ground_content = false,
+	groups = {cracky=3, stone=1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_craft({
+	output = 'plant_blocks:yellow_line_floor',
+	recipe = {
+		{'','dye:yellow', 'plant_blocks:ruler'},
+		{'plant_blocks:floor', 'plant_blocks:brush', ''},
+		{'', '', ''},
+	},
+	replacements = {
+		{"plant_blocks:brush", "plant_blocks:brush"},
+		{"plant_blocks:ruler", "plant_blocks:ruler"}
+	}
+})
+
+--plant_blocks:yellow_line_corner_floor
+minetest.register_node("plant_blocks:yellow_line_corner_floor", {
+    description = S("Industrial floor with yellow corner line"),
+    paramtype2 = "facedir",
+    --place_param2 = 0,
+    tiles = {
+    	"floor_up.png^yellow_line_corner_up.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+    	"basic_materials_cement_block.png",
+   	},
+    is_ground_content = false,
+	groups = {cracky=3, stone=1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_craft({
+	output = 'plant_blocks:yellow_line_corner_floor',
+	recipe = {
+		{'','dye:yellow', 'plant_blocks:ruler'},
+		{'plant_blocks:floor', 'plant_blocks:brush', 'plant_blocks:ruler'},
+		{'', '', ''},
+	},
+	replacements = {
+		{"plant_blocks:brush", "plant_blocks:brush"},
+		{"plant_blocks:ruler", "plant_blocks:ruler"},
+		{"plant_blocks:ruler", "plant_blocks:ruler"}
+	}
+})
