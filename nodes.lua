@@ -224,7 +224,7 @@ minetest.register_node("plant_blocks:e05", {
 --plant_blocks:e06
 minetest.register_node("plant_blocks:e06", {
 	description = S("Direction to the emergency exit left up"),
-	inventory_image = "plant_blocks_e05.png",
+	inventory_image = "plant_blocks_e05.png^[transform4",
 	tiles = {
 		"bg_green_sign.png",
 		"bg_green_sign.png",
@@ -296,7 +296,7 @@ minetest.register_node("plant_blocks:e07", {
 --plant_blocks:e06
 minetest.register_node("plant_blocks:e08", {
 	description = S("Direction to the emergency exit left down"),
-	inventory_image = "plant_blocks_e05.png",
+	inventory_image = "plant_blocks_e07.png^[transform4",
 	tiles = {
 		"bg_green_sign.png",
 		"bg_green_sign.png",
