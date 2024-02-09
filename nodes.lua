@@ -318,18 +318,14 @@ minetest.register_node("plant_blocks:e08", {
 	groups = {crumbly=3},
 })
 
---[[
 minetest.register_node("plant_blocks:hood", {
-	description = S("hood"),
+	description = S("Industrial hood"),
 	drawtype = "mesh",
-	-- Holds the texture for each "material"
 	tiles = {
-		"hood.png"
+		"plant_blocks_hood.png"
 	},
 	paramtype2 = "facedir",
-	--place_param2 = 0,
-	-- Path to the mesh
-	mesh = "hood.obj",
+	mesh = "plant_blocks_hood.obj",
 	paramtype = "light",
 	bounding_boxes = {{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}},
 	selection_box = {
@@ -345,46 +341,6 @@ minetest.register_node("plant_blocks:hood", {
 		},
 	},
 	is_ground_content = false,
-	groups = {crumbly=3},
-	on_construct = function(pos)
-		--local node = minetest.get_node(pos)
-		--local wheel = minetest.add_entity(pos, "modern:test", minetest.serialize({pos=pos, name=node.name}))
-	end,
-	on_rightclick = function(pos, node, clicker)
-		local wheel = minetest.add_entity(pos, "plant_blocks:test", minetest.serialize({pos=pos, name=node.name}))
-	end
-})
-
-minetest.register_entity("plant_blocks:test", {
-	visual = "mesh",
-	mesh = "hood_fan.obj",
-	textures = {"hood.png"},
-	--visual_size = vector.new(0, 0, 0),
-	on_activate = function(self)
-		--self.timer = 0
-		self.object:set_animation({x = 1, y = 1}, 60, 0, true) -- change 6 to 7 for successful replay
-	end,
-	on_step = function(self, dtime)
-			self.object:set_animation({x = 1, y = 30}, 100, 0, true) -- change 6 to 7 for successful replay
-	end,
-})]]
-
-minetest.register_entity("plant_blocks:hood", {
-	visual = "mesh",
-	visual_size = {x = 10, y = 10, z = 10},
-	mesh = "hood.b3d",
-	textures = {"hood.png"}, -- I just needed a texture
-	physical = true,
-	on_activate = function(self, staticdata)
-		self.object:set_animation({x = 0, y = 100},  100, 0, true)
-	end,
-})
-
-minetest.register_craftitem("plant_blocks:hood", {
-	description = "Animation test",
-	inventory_image = "bones_bottom.png",
-	wield_image = "bones_bottom.png",
-	on_place = function(itemstack, placer, pointed_thing)
-		minetest.add_entity(pointed_thing.above, "plant_blocks:hood")
-	end,
+	groups = {cracky = 1, level = 2, concrete=1},
+	sounds = default.node_sound_metal_defaults(),
 })
