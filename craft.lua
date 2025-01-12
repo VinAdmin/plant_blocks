@@ -106,6 +106,20 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'plant_blocks:w15',
+	recipe = {
+		{'dye:black','plant_blocks:triangular_stencil', 'dye:yellow'},
+		{'plant_blocks:brush', '', 'plant_blocks:scissors'},
+		{'', 'basic_materials:plastic_sheet', ''},
+	},
+	replacements = {
+		{"plant_blocks:brush", "plant_blocks:brush"},
+		{"plant_blocks:triangular_stencil", "plant_blocks:triangular_stencil"},
+		{"plant_blocks:scissors", "plant_blocks:scissors"},
+	}
+})
+
+minetest.register_craft({
 	output = 'plant_blocks:yellow_line_floor',
 	recipe = {
 		{'','dye:yellow', 'plant_blocks:ruler'},

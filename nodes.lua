@@ -112,52 +112,68 @@ minetest.register_node("plant_blocks:forklift_floor_sign", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+local function triangular_sign(params)
+	minetest.register_node(params.name, {
+		description = params.description,
+		drawtype = "mesh",
+		-- Holds the texture for each "material"
+		tiles = params.tiles,
+		paramtype2 = "facedir",
+		--place_param2 = 0,
+		-- Path to the mesh
+		mesh = "triangular_sign.obj",
+		paramtype = "light",
+		bounding_boxes = {{0.4375, -0.5, -0.5, 0.5, 0.5, 0.5}},
+		selection_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
+			},
+		},
+		node_box = {
+			type = "wallmounted",
+
+			-- Ceiling
+			wall_top    = {
+				{-0.5, 0.4375, -0.5, 0.5, 0.5, 0.5},
+			},
+
+			-- Floor
+			wall_bottom = {
+				{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+			},
+
+			-- Wall
+			wall_side   = {
+				{-0.5, -0.3125, -0.4375, -0.4375, 0.3125, 0.4375}
+			}
+		},
+		collision_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
+			},
+		},
+		is_ground_content = false,
+		groups = {crumbly=3},
+	})
+end
+
 --plant_blocks:wall_sign_attention_forklift_operating Настенный знак внимание работает автопогрузчик
-minetest.register_node("plant_blocks:wall_sign_attention_forklift_operating", {
+triangular_sign({
+	name = "plant_blocks:wall_sign_attention_forklift_operating",
 	description = S("Wall sign attention to forklift operating"),
-    drawtype = "mesh",
-    -- Holds the texture for each "material"
-    tiles = {
-        "sign_attention_to_forklift_operating.png"
-    },
-    paramtype2 = "facedir",
-    --place_param2 = 0,
-    -- Path to the mesh
-    mesh = "triangular_sign.obj",
-	paramtype = "light",
-	bounding_boxes = {{0.4375, -0.5, -0.5, 0.5, 0.5, 0.5}},
-	selection_box = {
-        type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
-		},
-    },
-	node_box = {
-		type = "wallmounted",
-
-		-- Ceiling
-		wall_top    = {
-			{-0.5, 0.4375, -0.5, 0.5, 0.5, 0.5},
-		},
-
-		-- Floor
-		wall_bottom = {
-			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-		},
-
-		-- Wall
-		wall_side   = {
-			{-0.5, -0.3125, -0.4375, -0.4375, 0.3125, 0.4375}
-		}
+	tiles = {
+		"sign_attention_to_forklift_operating.png"
 	},
-	collision_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
-		},
+})
+
+triangular_sign({
+	name = "plant_blocks:w15",
+	description = S("Caution. Falling from height is possible."),
+	tiles = {
+		"plant_blocks_w15.png"
 	},
-	is_ground_content = false,
-	groups = {crumbly=3},
 })
 
 --plant_blocks:yellow_line_floor
